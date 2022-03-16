@@ -1,1 +1,11 @@
-# homebrew-tap
+# Mahiki Tap
+
+## How do I install these formulae?
+
+`brew install mahiki/tap/<formula>`
+
+Or `brew tap mahiki/tap` and then `brew install <formula>`.
+
+## Documentation
+
+`brew help`, `man brew` or check [Homebrew's documentation](https://docs.brew.sh).
