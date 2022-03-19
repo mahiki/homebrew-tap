@@ -1,6 +1,7 @@
 # Homebrew Tap: mahiki
 
 - [Homebrew Tap: mahiki](#homebrew-tap-mahiki)
+    - [IOYCSWISWYE: TOPLINES](#ioycswiswye-toplines)
     - [INCEP-DATE](#incep-date)
     - [OFF-WORLD: setup github repo](#off-world-setup-github-repo)
     - [BLUSH-RESPONSE: create `too` formula](#blush-response-create-too-formula)
@@ -11,6 +12,8 @@
     - [BLUSH-RESPONSE: ok create homebrew thingy now](#blush-response-ok-create-homebrew-thingy-now)
     - [EMPATHY](#empathy)
 
+## IOYCSWISWYE: TOPLINES
+TODO: trigger brew build on upstream updates at pypi
 
 ## INCEP-DATE
     python script -> poetry build -> pypi -> homebrew tap -> install local macos
@@ -123,6 +126,8 @@ This from the [poetry issue:][pogh], build and publish to pypi in one go from gi
 
 
 ## BLUSH-RESPONSE: ok create homebrew thingy now
+**PASS:** homebrew install working.
+
 ```bash
 brew create --help
 
@@ -143,12 +148,56 @@ Edit description and license, maybe its good to go?
 ```bash
 brew audit --new desertislandutils
 
-git checkout -b desertislandutils
+# yeah just push straight into main
 git add Formula/desertislandutils.rb
 git commit --message "desertislandutils 0.1.0 (new formula)"
-git push --set-upstream origin desertislandutils
 ```
 
+**Can we install with brew now?**
+```bash
+brew info mahiki/tap/desertislandutils
+    # mahiki/tap/desertislandutils: stable 0.1.0
+    # A collection of personal convenience utilities
+    # https://github.com/mahiki/homebrew-tap
+    # Not installed
+    # From: https://github.com/mahiki/homebrew-tap/blob/HEAD/Formula/desertislandutils.rb
+    # License: MIT
+
+# looking good..
+brew install mahiki/tap/desertislandutils
+
+which too
+# /opt/homebrew/bin/too
+```
+
+TEST: too package tests
+```bash
+cd ~/trashwork
+mkdir brew-tap-test-too && cd brew-tap-test-too
+
+too --help
+# PASS
+
+for arg in "big" "data" "doc"; do
+    too $arg
+    cat << EOF > $arg/testfile.txt
+    PASS: your executable is working now
+EOF
+done
+
+l
+# total 0
+# lrwxr-xr-x 1 35 Mar 18 13:31 big -> ../../toobig/repo/brew-tap-test-too
+# lrwxr-xr-x 1 36 Mar 18 13:31 data -> ../../toodata/repo/brew-tap-test-too
+# lrwxr-xr-x 1 35 Mar 18 13:31 doc -> ../../toodoc/repo/brew-tap-test-too
+
+cat */testfile.txt
+    # PASS: your executable is working now
+    # PASS: your executable is working now
+    # PASS: your executable is working now
+```
+
+Great!
 
 ----------
 ## EMPATHY

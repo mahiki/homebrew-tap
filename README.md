@@ -1,10 +1,22 @@
-# Mahiki Tap
+# Mahiki Homebrew Tap
+A personal tap to distribute tools back to myself via CI/CD workflow.
+## DESERTISLANDUTILS
+    python apps -> poetry -> pypi -> homebrew -> local machine
+
+[github: desertislandutils](https://github.com/mahiki/desertislandutils)
+
+[pypi: desertislandutils](https://pypi.org/project/desertislandutils/)
+
+Refactoring my convenience utility bash scripts into python for learning and profit.
 
 ## How do I install these formulae?
+```bash
+brew install mahiki/tap/desertislandutils
 
-`brew install mahiki/tap/<formula>`
-
-Or `brew tap mahiki/tap` and then `brew install <formula>`.
+# or
+brew tap mahiki/tap
+brew install desertislandutils
+```
 
 ## Documentation
 
