@@ -1,7 +1,7 @@
 class Desertislandutils < Formula
   include Language::Python::Virtualenv
 
-  desc "A collection of personal convenience utilities"
+  desc "Be here, thy collection of personal convenience utilities"
   homepage "https://github.com/mahiki/homebrew-tap"
   url "https://files.pythonhosted.org/packages/62/0f/db9abf3d5d7513b50f618d634cf666278cd6deb0e73f5880bfcc838b5c59/desertislandutils-0.1.0.tar.gz"
   sha256 "573c103661d99ff73a3f9749f5c3343f2e8255e36a66928a7192aaabecd056ef"
