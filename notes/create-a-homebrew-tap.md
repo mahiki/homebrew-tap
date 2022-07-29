@@ -13,8 +13,38 @@
     - [EMPATHY](#empathy)
 
 ## IOYCSWISWYE: TOPLINES
-TODO: trigger brew build on upstream updates at pypi
+NODO: trigger brew build on upstream updates at pypi
 
+TODO: use github release istead of pypi. trigger brew bump formula on relase.
+
+----------
+## UNICORN DREAM: UPDATE BREW URL
+The brew formula is working with tar.gz on pypi. I'm switching to github artifacts store via github release actions.
+
+First lets try updating the formula with the new URL.
+
+NOTE: the SHA of the tar.gz file locally is different than the github release tar.gz:
+```sh
+brew edit mahiki/tap/desertislandutils
+# opens the desertislandtils.rb file
+
+# github tar file created via Release UI from `main v0.1.0`
+curl -Ls https://github.com/mahiki/desertislandutils/archive/refs/tags/v0.1.0.tar.gz | shasum -a 256
+f787cbb83fd804fe7761ca2f1cceb425a74f4e581d557aea7e03e3afd8d49cc8  -
+
+# ../desertislandutils/
+shasum -a 256 dist/desertislandutils-0.1.0.tar.gz
+573c103661d99ff73a3f9749f5c3343f2e8255e36a66928a7192aaabecd056ef  dist/desertislandutils-0.1.0.tar.gz
+# DIFFERENT
+
+# note the PyPi hosted one:
+curl -Ls https://files.pythonhosted.org/packages/62/0f/db9abf3d5d7513b50f618d634cf666278cd6deb0e73f5880bfcc838b5c59/desertislandutils-0.1.0.tar.gz | shasum -a 256
+573c103661d99ff73a3f9749f5c3343f2e8255e36a66928a7192aaabecd056ef  -
+# SAME AS THE LOCAL COPY!
+
+```
+
+----------
 ## INCEP-DATE
     python script -> poetry build -> pypi -> homebrew tap -> install local macos
     python script -> nuitka binary -> homebrew tap -> install local macos
@@ -36,7 +66,6 @@ cd $(brew --repo mahiki/tap)
 # going to move the repo to ~/repo and symlink to brew location
 
 brew developer off
-
 ```
 
 Now my homebrew repo is set up, I can put all my brew formula there to publish to my tap with artifacts ready to download via github actions.
@@ -111,7 +140,6 @@ poetry publish --build
 OK get started, PyPi project created. Only way I can figure out to pass the token to poetry is paste to CLI, *no idea where that config is stored*.
 
 WAIT: suddenly its in macos keychain, 'poetry-repository-pypi'.
-
 
     poetry config pypi-token.pypi pypi-AgEIcHl...
     # new entry in macos keychain is created
