@@ -2,6 +2,8 @@
 
 - [Homebrew Tap: mahiki](#homebrew-tap-mahiki)
     - [IOYCSWISWYE: TOPLINES](#ioycswiswye-toplines)
+    - [UNICORN DREAM: BUILT URL IS `/downloads/` LINK](#unicorn-dream-built-url-is-downloads-link)
+    - [UNICORN DREAM: UPDATE BREW URL](#unicorn-dream-update-brew-url)
     - [INCEP-DATE](#incep-date)
     - [OFF-WORLD: setup github repo](#off-world-setup-github-repo)
     - [BLUSH-RESPONSE: create `too` formula](#blush-response-create-too-formula)
@@ -15,9 +17,19 @@
 ## IOYCSWISWYE: TOPLINES
 NODO: trigger brew build on upstream updates at pypi
 
-TODO: use github release istead of pypi. trigger brew bump formula on relase.
+DONE: use github release istead of pypi. trigger brew bump formula on relase.
 
 ----------
+## UNICORN DREAM: BUILT URL IS `/downloads/` LINK
+```sh
+curl -Ls https://github.com/mahiki/desertislandutils/releases/download/v0.1.0/desertislandutils-0.1.0.tar.gz | shasum -a 256
+573c103661d99ff73a3f9749f5c3343f2e8255e36a66928a7192aaabecd056ef
+```
+
+Which is the same as the local tarball and the PyPi hosted download link as well.
+
+Mystery solved!
+
 ## UNICORN DREAM: UPDATE BREW URL
 The brew formula is working with tar.gz on pypi. I'm switching to github artifacts store via github release actions.
 
@@ -41,8 +53,18 @@ shasum -a 256 dist/desertislandutils-0.1.0.tar.gz
 curl -Ls https://files.pythonhosted.org/packages/62/0f/db9abf3d5d7513b50f618d634cf666278cd6deb0e73f5880bfcc838b5c59/desertislandutils-0.1.0.tar.gz | shasum -a 256
 573c103661d99ff73a3f9749f5c3343f2e8255e36a66928a7192aaabecd056ef  -
 # SAME AS THE LOCAL COPY!
-
 ```
+
+OK I have pushed the changed URL and SHA to `main` in tap-homebrew. Does it still work?
+```sh
+ brew audit desertislandutils
+ # no result prob good
+
+brew upgrade desertislandutils
+# Warning: mahiki/tap/desertislandutils 0.1.0 already installed
+```
+
+OK, with no version change I suppose no action. But at least my .rb formula is now lined up for the next release.
 
 ----------
 ## INCEP-DATE
