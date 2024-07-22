@@ -7,7 +7,7 @@ class Desertislandutils < Formula
   sha256 "d71e44f9306fe2833664c74ab07690913eeb460d0f84dbc2ee1fb8ebbaf58032"
   license "MIT"
 
-  depends_on "python@3.9"
+  depends_on "python@3.11"
 
   resource "gitdb" do
     url "https://files.pythonhosted.org/packages/fc/44/64e02ef96f20b347385f0e9c03098659cb5a1285d36c3d17c56e534d80cf/gitdb-4.0.9.tar.gz"
