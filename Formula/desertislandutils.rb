@@ -3,8 +3,9 @@ class Desertislandutils < Formula
 
   desc "Be here, thy collection of personal convenience utilities"
   homepage "https://github.com/mahiki/homebrew-tap"
-  url "https://github.com/mahiki/desertislandutils/releases/download/v0.2.1/desertislandutils-0.2.1.tar.gz"
-  sha256 "e7e31e37a4073382a0be4ac8410b41117671700cc4aa9e17cf43a2d06bfd5625"
+  url "https://github.com/mahiki/desertislandutils/releases/download/v0.3.9/desertislandutils-0.3.9.tar.gz"
+  sha256 "d71e44f9306fe2833664c74ab07690913eeb460d0f84dbc2ee1fb8ebbaf58032"
+  version '0.3.9'
   license "MIT"
 
   depends_on "python@3.9"
