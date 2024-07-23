@@ -8,9 +8,13 @@ class Desertislandutils < Formula
   license "MIT"
 
   depends_on "python@3.11"
+  depends_on "poetry"
 
   def install
-    virtualenv_install_with_resources
+    venv = virtualenv_create(libexec, "python3")
+
+    system "poetry", "install", "--no-root"
+
   end
 
   test do

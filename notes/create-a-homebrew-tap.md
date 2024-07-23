@@ -1,6 +1,7 @@
 # Homebrew Tap: mahiki
 
 - [Homebrew Tap: mahiki](#homebrew-tap-mahiki)
+    - [RSRC](#rsrc)
     - [IOYCSWISWYE: TOPLINES](#ioycswiswye-toplines)
     - [UNICORN DREAM: BUILT URL IS `/downloads/` LINK](#unicorn-dream-built-url-is-downloads-link)
     - [UNICORN DREAM: UPDATE BREW URL](#unicorn-dream-update-brew-url)
@@ -13,6 +14,10 @@
         - [local poetry publish to pypi](#local-poetry-publish-to-pypi)
     - [BLUSH-RESPONSE: ok create homebrew thingy now](#blush-response-ok-create-homebrew-thingy-now)
     - [EMPATHY](#empathy)
+
+## RSRC
+[Homebrew docs: Python Formula](https://docs.brew.sh/Python-for-Formula-Authors)
+[Homebrew docs: Why not install with pip inside homebrew](https://docs.brew.sh/Acceptable-Formulae#we-dont-like-install-scripts-that-download-unversioned-things)
 
 ## IOYCSWISWYE: TOPLINES
 NODO: trigger brew build on upstream updates at pypi
@@ -38,7 +43,7 @@ First lets try updating the formula with the new URL.
 NOTE: the SHA of the tar.gz file locally is different than the github release tar.gz:
 ```sh
 brew edit mahiki/tap/desertislandutils
-# opens the desertislandtils.rb file
+# opens the desertislandutils.rb file
 
 # github tar file created via Release UI from `main v0.1.0`
 curl -Ls https://github.com/mahiki/desertislandutils/archive/refs/tags/v0.1.0.tar.gz | shasum -a 256
@@ -110,7 +115,7 @@ brew create --tap=mahiki/tap <URL of tar artifact>
 * [ASCIINEMA has pyproject definition and pypi hosting.][asci]
 * Maybe just make a pypi package and try the homebrew defaults
 
-[asciinema brew formula simple](https://github.com/Homebrew/homebrew-core/blob/HEAD/Formula/asciinema.rb)
+[asciinema brew formula simple](https://github.com/Homebrew/homebrew-core/blob/HEAD/Formula`/asciinema.rb)
 
 ```rb
 url "https://files.pythonhosted.org/packages/2c/31/492da48c9d7d23cd26f16c8f459aeb443ff056258bed592b5ba28ed271ea/asciinema-2.1.0.tar.gz"
