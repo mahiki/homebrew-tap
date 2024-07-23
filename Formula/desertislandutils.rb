@@ -13,7 +13,14 @@ class Desertislandutils < Formula
   def install
     venv = virtualenv_create(libexec, "python3")
 
+    ENV["VIRTUAL_ENV"] = libexec
+
+    puts "libexec: #{libexec}"
+        # this comes as: libexec: /opt/homebrew/Cellar/desertislandutils/0.3.10/libexec
+
     system "poetry", "install", "--no-root"
+
+    venv.pip_install_and_link buildpath
 
   end
 
@@ -28,7 +35,8 @@ class Desertislandutils < Formula
     #
     # The installed folder is not in the path, so use the entire path to any
     # executables being tested: `system "#{bin}/program", "do", "something"`.
-    system "false"
+    system "#{bin}/wn", "--help"
+
     # TODO: basic test of built function
     # system "#{bin}/wn", "--help"
     # system "#{bin}/too", "--help"

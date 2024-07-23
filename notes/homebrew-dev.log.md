@@ -1,13 +1,38 @@
 # Homebrew Dev Log
 
 ## 2024-07-23: HOMEBREW INSTALL FROM FILE
+
+### First Try: wn installed and linked, but dependencies installed to poetry venv
 ```sh
 cd ./the-others/homebrew-tap
 HOMEBREW_NO_INSTALL_FROM_API=1 brew install --build-from-source --verbose Formula/desertislandutils.rb
 
 # it pulls down a whole lotta objects.
+
+==> Finishing up
+ln -s ../Cellar/desertislandutils/0.3.10/bin/too too
+ln -s ../Cellar/desertislandutils/0.3.10/bin/wn wn
+==> Summary
+🍺  /opt/homebrew/Cellar/desertislandutils/0.3.10: 22 files, 35.6KB, built in 9 seconds
+
+# Install works! symlinks created.
+
+which wn
+/Users/hans/bin/utility/wn
+/opt/homebrew/bin/wn
+
+/opt/homebrew/bin/wn --help
+    # Traceback (most recent call last):
+    # File "/opt/homebrew/bin/wn", line 5, in <module>
+    #     from src.weeknumber.wn import app
+    # File "/opt/homebrew/Cellar/desertislandutils/0.3.10/libexec/lib/python3.12/site-packages/src/weeknumber/wn.py", line 9, in <module>
+    #     import pendulum
+    # ModuleNotFoundError: No module named 'pendulum'
 ```
-It works!
+Module not found, because it installed in the usual poetry env:
+
+    ==> poetry install --no-root
+    Creating virtualenv desertislandutils-wMi-OlyN-py3.12 in /private/tmp/desertislandutils-20240723-43941-or2nph/desertislandutils-0.3.10/.brew_home/Library/Caches/pypoetry/virtualenvs
 
 ## 2024-07-23: POETRY INSTALL IN HOMEBREW
 Chatgpt narrows down a potentially workable idea.
