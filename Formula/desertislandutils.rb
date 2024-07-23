@@ -13,7 +13,12 @@ class Desertislandutils < Formula
   def install
     venv = virtualenv_create(libexec, "python3")
     ENV["VIRTUAL_ENV"] = libexec
-    system "poetry", "install", "--no-root"
+    ENV.prepend_path "PATH", "#{libexec_path}/bin"
+    puts "instal stage libexec path: #{libexec}"
+    puts "env VIRTUAL_ENV: #{libexec}"
+    cd buildpath do
+        system "poetry", "install", "--no-root"
+    end
     venv.pip_install_and_link buildpath
   end
 

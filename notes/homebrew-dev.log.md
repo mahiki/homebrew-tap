@@ -1,5 +1,19 @@
 # Homebrew Dev Log
 
+## 2024-07-24: INSTALL FROM REMOTE
+```sh
+==> poetry install --no-root
+Last 15 lines from /Users/merlinr/Library/Logs/Homebrew/desertislandutils/02.poetry:
+2024-07-23 22:25:05 +0000
+
+poetry
+install
+--no-root
+
+
+Poetry could not find a pyproject.toml file in /private/tmp/desertislandutils-20240724-57124-8bvipf or its parents
+```
+
 ## 2024-07-23: HOMEBREW INSTALL FROM FILE
 ### Totally Works!
 ```ruby
