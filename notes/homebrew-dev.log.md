@@ -1,6 +1,15 @@
 # Homebrew Dev Log
 
 ## 2024-07-23: HOMEBREW INSTALL FROM FILE
+### Totally Works!
+```ruby
+  def install
+    venv = virtualenv_create(libexec, "python3")
+    ENV["VIRTUAL_ENV"] = libexec
+    system "poetry", "install", "--no-root"
+    venv.pip_install_and_link buildpath
+  end
+```
 
 ### First Try: wn installed and linked, but dependencies installed to poetry venv
 ```sh
