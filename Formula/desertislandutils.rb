@@ -7,8 +7,8 @@ class Desertislandutils < Formula
   sha256 "9c8304fdb02a1fd9d3ffd460cdaf25f1b22a70f2d18ebde700080d328c306216"
   license "MIT"
 
-  depends_on "python@3.11"
   depends_on "poetry"
+  depends_on "python@3.11"
 
   def install
     venv = virtualenv_create(libexec, "python3")
@@ -18,7 +18,7 @@ class Desertislandutils < Formula
     puts "env VIRTUAL_ENV: #{ENV["VIRTUAL_ENV"]}"
     puts "buildpath: #{buildpath}"
     cd buildpath do
-        system "poetry", "install", "--no-root"
+      system "poetry", "install", "--no-root"
     end
     venv.pip_install_and_link buildpath
   end
