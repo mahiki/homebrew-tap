@@ -1,15 +1,17 @@
 # Mahiki Homebrew Tap
-A personal tap to distribute tools back to myself via CI/CD workflow.
+A personal tap to distribute CLI tools and utils back to myself via CI/CD workflow. _Refactoring my convenience utility bash scripts into python for learning and profit._
+
 ## DESERTISLANDUTILS
-    python apps -> poetry -> pypi -> homebrew -> local machine
+    poetry managed python scripts
+    typer CLI tool
+    GHA: Test -> Merge Release and Tag -> Create Release
+    GHA: Trigger bump homebrew formula
 
-[github: desertislandutils](https://github.com/mahiki/desertislandutils)
+[github: desertislandutils Releases](https://github.com/mahiki/desertislandutils/releases)
 
-[pypi: desertislandutils](https://pypi.org/project/desertislandutils/)
+[DEPRECATED - pypi: desertislandutils](https://pypi.org/project/desertislandutils/) _† maybe bring this back because 
 
-Refactoring my convenience utility bash scripts into python for learning and profit.
-
-## How do I install these formulae?
+## INSTALL
 ```bash
 brew install mahiki/tap/desertislandutils
 
@@ -19,5 +21,4 @@ brew install desertislandutils
 ```
 
 ## Documentation
-
 `brew help`, `man brew` or check [Homebrew's documentation](https://docs.brew.sh).

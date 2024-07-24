@@ -1,6 +1,20 @@
 # Homebrew Dev Log
 
+## CHEWS PLACE
+```sh
+# DEV: run install from local formula
+HOMEBREW_NO_INSTALL_FROM_API=1 brew install --build-from-source --verbose Formula/desertislandutils.rb
+
+# DEV: test locally
+brew test-bot --only-tap-syntax Formula/desertislandutils.rb
+```
+
 ## 2024-07-24: INSTALL FROM REMOTE
+**Final Formula works great! (so proud)**
+
+[Formula Cookbook](https://docs.brew.sh/Formula-Cookbook#basic-instructions)
+[Homebrew builds doc](https://docs.brew.sh/Reproducible-Builds)
+
 ```sh
 ==> poetry install --no-root
 Last 15 lines from /Users/merlinr/Library/Logs/Homebrew/desertislandutils/02.poetry:
@@ -10,8 +24,25 @@ poetry
 install
 --no-root
 
-
 Poetry could not find a pyproject.toml file in /private/tmp/desertislandutils-20240724-57124-8bvipf or its parents
+```
+### Final Formula
+* added VIRTUAL_ENV
+* change directory to buildpath
+* poetry still installing in weird directory, but symlink step still works
+```rb
+  def install
+    venv = virtualenv_create(libexec, "python3")
+    ENV["VIRTUAL_ENV"] = libexec
+    ENV.prepend_path "PATH", "#{libexec}/bin"
+    puts "install stage libexec path: #{libexec}"
+    puts "env VIRTUAL_ENV: #{ENV["VIRTUAL_ENV"]}"
+    puts "buildpath: #{buildpath}"
+    cd buildpath do
+        system "poetry", "install", "--no-root"
+    end
+    venv.pip_install_and_link buildpath
+  end
 ```
 
 ## 2024-07-23: HOMEBREW INSTALL FROM FILE
