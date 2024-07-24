@@ -9,7 +9,7 @@ A personal tap to distribute CLI tools and utils back to myself via CI/CD workfl
 
 [github: desertislandutils Releases](https://github.com/mahiki/desertislandutils/releases)
 
-[DEPRECATED - pypi: desertislandutils](https://pypi.org/project/desertislandutils/) _† maybe bring this back because 
+[DEPRECATED - pypi: desertislandutils](https://pypi.org/project/desertislandutils/) _† maybe bring this back because SHA provided there_
 
 ## INSTALL
 ```bash
