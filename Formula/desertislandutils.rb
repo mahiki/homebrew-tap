@@ -11,7 +11,7 @@ class Desertislandutils < Formula
   depends_on "python@3.11"
 
   def install
-    venv = virtualenv_create(libexec, "python3")
+    venv = virtualenv_create(libexec, "python3.11")
     ENV["VIRTUAL_ENV"] = libexec
     ENV.prepend_path "PATH", "#{libexec}/bin"
     puts "install stage libexec path: #{libexec}"
