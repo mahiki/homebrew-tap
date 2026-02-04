@@ -12,19 +12,15 @@ class Desertislandutils < Formula
 
   def install
     venv = virtualenv_create(libexec, "python3.11")
-    ENV["VIRTUAL_ENV"] = libexec
-    ENV.prepend_path "PATH", "#{libexec}/bin"
 
-    puts "install stage libexec path: #{libexec}"
-    puts "env VIRTUAL_ENV: #{ENV["VIRTUAL_ENV"]}"
-    puts "buildpath: #{buildpath}"
+    # Use uv pip to install the package and its dependencies
+    system "uv", "pip", "install",
+           "--python", "#{libexec}/bin/python3.11",
+           buildpath
 
-    cd buildpath do
-      # Use uv to sync dependencies into the virtualenv
-      system "uv", "sync", "--no-dev", "--python", "#{libexec}/bin/python3.11"
-    end
-
-    venv.pip_install_and_link buildpath
+    # Link the executables
+    bin.install_symlink Dir["#{libexec}/bin/wn"]
+    bin.install_symlink Dir["#{libexec}/bin/too"]
   end
 
   test do
