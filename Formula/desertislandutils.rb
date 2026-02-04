@@ -7,19 +7,12 @@ class Desertislandutils < Formula
   sha256 "4f8dec76c36c0fb52172a4deac8b96a04b6eea5f7605615c37ce6dfb7216503c"
   license "MIT"
 
-  depends_on "uv"
   depends_on "python@3.11"
 
   def install
     venv = virtualenv_create(libexec, "python3.11")
-    ENV["VIRTUAL_ENV"] = libexec
-    ENV.prepend_path "PATH", "#{libexec}/bin"
 
-    cd buildpath do
-      system "uv", "sync", "--no-dev"
-    end
-
-    # Install the package into the virtualenv
+    # Install the package and its dependencies
     venv.pip_install_and_link buildpath
   end
 

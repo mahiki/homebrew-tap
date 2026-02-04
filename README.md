@@ -1,24 +1,57 @@
 # Mahiki Homebrew Tap
-A personal tap to distribute CLI tools and utils back to myself via CI/CD workflow. _Refactoring my convenience utility bash scripts into python for learning and profit._
 
-## DESERTISLANDUTILS
-    poetry managed python scripts
-    typer CLI tool
-    GHA: Test -> Merge Release and Tag -> Create Release
-    GHA: Trigger bump homebrew formula
+A personal tap for distributing CLI tools via Homebrew.
 
-[github: desertislandutils Releases](https://github.com/mahiki/desertislandutils/releases)
+## desertislandutils
 
-[DEPRECATED - pypi: desertislandutils](https://pypi.org/project/desertislandutils/) _† maybe bring this back because SHA provided there_
+A collection of personal convenience utilities for managing parallel directory structures and ISO week numbers.
 
-## INSTALL
+**Build:** UV-managed Python project  
+**Deploy:** PyPI (primary) + Homebrew (alternative)  
+**CI/CD:** GitHub Actions → Test → Tag → PyPI + Homebrew release
+
+### Links
+
+- [GitHub Repository](https://github.com/mahiki/desertislandutils)
+- [GitHub Releases](https://github.com/mahiki/desertislandutils/releases)
+- [PyPI Package](https://pypi.org/project/desertislandutils/)
+
+## Installation
+
+### Recommended: Install from PyPI
+
+```bash
+uv tool install desertislandutils
+```
+
+This is the preferred installation method for Python CLI tools.
+
+### Alternative: Install via Homebrew
+
 ```bash
 brew install mahiki/tap/desertislandutils
+```
 
-# or
+```bash
+# or tap first, then install
 brew tap mahiki/tap
 brew install desertislandutils
 ```
 
+## Usage
+
+Once installed, two commands are available:
+
+```bash
+# ISO week number utility
+wn --help
+
+# Parallel directory manager (toobig/toodata/toodoc)
+too --help
+```
+
 ## Documentation
-`brew help`, `man brew` or check [Homebrew's documentation](https://docs.brew.sh).
+
+For Homebrew usage: `brew help`, `man brew`, or [Homebrew's documentation](https://docs.brew.sh).
+
+For desertislandutils: See the [project README](https://github.com/mahiki/desertislandutils/blob/main/README.md).
