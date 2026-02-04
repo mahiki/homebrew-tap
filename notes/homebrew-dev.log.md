@@ -17,7 +17,7 @@ brew test-bot --only-tap-syntax Formula/desertislandutils.rb
 
 ```sh
 ==> poetry install --no-root
-Last 15 lines from /Users/merlinr/Library/Logs/Homebrew/desertislandutils/02.poetry:
+Last 15 lines from $HOME/Library/Logs/Homebrew/desertislandutils/02.poetry:
 2024-07-23 22:25:05 +0000
 
 poetry
